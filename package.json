@@ -8,7 +8,7 @@
     "start": "node server.mjs",
     "dev": "nodemon server.mjs",
     "test:dev": "ava --watch",
-    "test": "c8 ava",
+    "test": "c8 --reporter 'clover' ava",
     "lint": "eslint *.mjs --fix",
     "prepare": "husky install"
   },
