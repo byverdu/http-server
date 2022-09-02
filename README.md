@@ -1,4 +1,4 @@
-![CircleCI](https://img.shields.io/circleci/build/github/byverdu/http-server?style=plastic)
+![CircleCI](https://img.shields.io/circleci/build/github/byverdu/http-server?style=plastic) ![Codecov](https://img.shields.io/codecov/c/github/byverdu/http-server?style=plastic)
 
 # http-server
 
