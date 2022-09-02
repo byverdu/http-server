@@ -5,5 +5,19 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  lint-files:
-    yarn lint
+  lint_and_test:
+    executor: node/default # use the default executor defined within the orb
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn run lint
+          name: Lint Files
+      - run:
+          command: yarn test
+          name: Run Tests
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
