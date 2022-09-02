@@ -1,21 +1,25 @@
 # CircleCI configuration file
 version: 2.1
+
 orbs:
   node: circleci/node@5.0.2
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - lint_and_test
+
 jobs:
   lint_and_test:
     executor: node/default # use the default executor defined within the orb
     steps:
       - checkout
       - node/install-packages:
-          pkg-manager: yarn
+          pkg-manager: npm
       - run:
-          command: yarn run lint
+          command: npm run lint
           name: Lint Files
-      - run:
-          command: yarn test
-          name: Run Tests
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
+      # - run:
+      #   command: yarn test
+      #   name: Run Tests
