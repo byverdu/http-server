@@ -16,9 +16,9 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          pkg-manager: npm
+          pkg-manager: yarn
       - run:
-          command: npm run lint
+          command: yarn run lint
           name: Lint Files
       # - run:
       #   command: yarn test
