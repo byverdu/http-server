@@ -20,6 +20,6 @@ jobs:
       - run:
           command: yarn run lint
           name: Lint Files
-      # - run:
-      #   command: yarn test
-      #   name: Run Tests
+      - run:
+        command: yarn test
+        name: Run Tests
