@@ -1,9 +1,7 @@
 # CircleCI configuration file
 version: 2.1
-
 orbs:
   node: circleci/node@5.0.2
-
 jobs:
   lint_and_test:
     executor: node/default # use the default executor defined within the orb
