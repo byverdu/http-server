@@ -1,8 +1,10 @@
 # CircleCI configuration file
+
 version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
+  codecov: codecov/codecov@3.1.1
 
 workflows:
   version: 2
@@ -23,3 +25,5 @@ jobs:
       - run:
           command: yarn run test
           name: Run Tests
+      - codecov/upload:
+          file: './coverage/clover.xml'
