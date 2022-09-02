@@ -10,6 +10,10 @@ describe('App', () => {
     expect(() => expressApp()).toThrowError('Either routes is not defined or it is not an Array')
   })
 
+  it('should throw Error if routes is not an Array', () => {
+    expect(() => expressApp({ routes: 100 })).toThrowError('Either routes is not defined or it is not an Array')
+  })
+
   it('should throw Error if routes do not provide a valid HTTP method', () => {
     expect(() => expressApp({ routes: [{ method: 'posted' }] })).toThrowError('posted is not a valid HTTP method \n Allowed methods are get - delete - post - put - patch')
   })
