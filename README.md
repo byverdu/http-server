@@ -1,4 +1,8 @@
+![CircleCI](https://img.shields.io/circleci/build/github/byverdu/http-server?style=plastic)
+
 # http-server
+
+This package is meant to be used as a quick way to setup an Express application
 
 ## How to use it
 
