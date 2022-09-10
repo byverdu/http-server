@@ -11,12 +11,17 @@ import { healthRouter } from './routes/health.mjs'
  *    path: string,
  *    handler: function(Request, Response)
  *  }>
+ *  middleware: Array<Function>
  * }}
  * @returns @type Express
  */
-function expressApp ({ routes } = {}) {
+function expressApp ({ routes, middleware } = {}) {
   if (!routes || !Array.isArray(routes)) {
     throw new Error('Either routes is not defined or it is not an Array')
+  }
+
+  if (!middleware || !Array.isArray(middleware)) {
+    throw new Error('Either middleware is not defined or it is not an Array')
   }
 
   const app = express()
@@ -26,6 +31,13 @@ function expressApp ({ routes } = {}) {
   app.use(morgan('dev'))
   app.use('/health', healthRouter)
   app.use(express.static('public'))
+
+  for (const handler of middleware) {
+    if (typeof handler !== 'function') {
+      throw new Error(`handler must be a function. Actual type is "${typeof handler}"`)
+    }
+    app.use(handler)
+  }
 
   for (const { path, handler, method } of routes) {
     if (!validHTTPMethods.includes(method)) {

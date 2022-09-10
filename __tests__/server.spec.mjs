@@ -3,7 +3,7 @@ import { httpServer } from '../server.mjs'
 let server
 
 beforeAll(() => {
-  server = httpServer({ routes: [] })
+  server = httpServer({ routes: [], middleware: [() => {}] })
 })
 
 afterAll(() => {
@@ -24,7 +24,7 @@ describe('Server', () => {
   })
 
   it('should set the port number', () => {
-    const server = httpServer({ port: 6969, routes: [] })
+    const server = httpServer({ port: 6969, routes: [], middleware: [() => {}] })
 
     expect(server.address().port).toEqual(6969)
     server.close()
