@@ -36,6 +36,8 @@ function expressApp ({ routes, middleware } = {}) {
     if (typeof handler !== 'function') {
       throw new Error(`handler must be a function. Actual type is "${typeof handler}"`)
     }
+
+    // Register all the middleware
     app.use(handler)
   }
 
