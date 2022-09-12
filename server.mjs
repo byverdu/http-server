@@ -14,7 +14,7 @@ import { expressApp } from './app.mjs'
  * @returns @type Express
  */
 
-function httpServer ({ port, routes, middleware } = {}) {
+function httpServer ({ port, routes, middleware = [] } = {}) {
   const PORT = port || 3000
   const server = expressApp({ routes, middleware })
 
