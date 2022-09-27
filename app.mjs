@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
+import bodyParser from 'body-parser'
 import { healthRouter } from './routes/health.mjs'
 
 /**
@@ -31,15 +32,7 @@ function expressApp ({ routes, middleware } = {}) {
   app.use(morgan('dev'))
   app.use('/health', healthRouter)
   app.use(express.static('public'))
-
-  for (const handler of middleware) {
-    if (typeof handler !== 'function') {
-      throw new Error(`handler must be a function. Actual type is "${typeof handler}"`)
-    }
-
-    // Register all the middleware
-    app.use(handler)
-  }
+  app.use(bodyParser.json())
 
   for (const { path, handler, method } of routes) {
     if (!validHTTPMethods.includes(method)) {
@@ -66,6 +59,15 @@ function expressApp ({ routes, middleware } = {}) {
   app.use((req, res) => {
     res.status(404).send(`No handler found for ${req.url}`)
   })
+
+  for (const handler of middleware) {
+    if (typeof handler !== 'function') {
+      throw new Error(`handler must be a function. Actual type is "${typeof handler}"`)
+    }
+
+    // Register all the middleware
+    app.use(handler)
+  }
 
   return app
 }
