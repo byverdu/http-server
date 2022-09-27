@@ -1,6 +1,6 @@
 import request from 'supertest'
 import { jest } from '@jest/globals'
-import { expressApp } from '../app.mjs'
+import { expressApp } from '../src/app.mjs'
 
 const mockedMiddleware = jest.fn
 
