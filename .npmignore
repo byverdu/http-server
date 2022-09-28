@@ -1,0 +1,8 @@
+__tests__/
+.github/
+.husky/
+yarn*
+codecov.yml
+.eslin*
+src/
+utils/
