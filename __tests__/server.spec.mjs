@@ -1,4 +1,4 @@
-import { httpServer } from '../server.mjs'
+import { httpServer } from '../src/server.mjs'
 
 let server
 

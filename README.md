@@ -11,7 +11,7 @@ This package is meant to be used as a quick way to setup an Express application.
 
 ## Params
 
-Pass an object with the following properties::
+Pass an object with the following properties:
 
 ```ts
 interface Route {
