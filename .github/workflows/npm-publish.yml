@@ -18,11 +18,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-      - name: Publishing to npm      
-      - uses: JS-DevTools/npm-publish@  
-      - run: yarn
+      -  run: yarn
       - run: yarn lint
       - run: yarn test
       - run: yarn build
+
+      - name: Publishing to npm      
+      - uses: JS-DevTools/npm-publish@  
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
