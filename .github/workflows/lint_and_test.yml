@@ -2,11 +2,11 @@ name: Lint and Build App
 
 on:
   push:
-    branches: 
-      - '!master'
+    branches-ignore: 
+      - 'master'
   pull_request:
-    branches: 
-      - '!master'
+    branches-ignore: 
+      - 'master'
 
 jobs:
   build:
