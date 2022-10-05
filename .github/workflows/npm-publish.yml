@@ -24,7 +24,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
       - uses: "ncipollo/release-action@v1"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
           removeArtifacts: true
           artifacts: |
             lib/**
