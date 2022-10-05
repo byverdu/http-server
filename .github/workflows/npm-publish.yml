@@ -26,7 +26,7 @@ jobs:
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           removeArtifacts: true
-          tag: "1.0.7"
+          tag: ${{ github.event.inputs.major }}.${{ github.event.inputs.minor }}.${{ github.event.inputs.patch }}
           artifacts: |
             lib/**
             README.md
