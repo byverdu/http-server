@@ -1,8 +1,8 @@
 name: npm-publish
 on:
   push:
-    branches:
-      - master
+    tags:
+      - "*"
 
 jobs:
   publish:
@@ -26,7 +26,6 @@ jobs:
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           removeArtifacts: true
-          tag: ${{ github.event.inputs.major }}.${{ github.event.inputs.minor }}.${{ github.event.inputs.patch }}
           artifacts: |
             lib/**
             README.md
