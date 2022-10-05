@@ -22,12 +22,11 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: "ncipollo/release-action@v1"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          files: |
-            lib/*
+          removeArtifacts: true
+          artifacts: |
+            lib/**
             README.md
             package.json
