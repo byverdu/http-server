@@ -12,6 +12,7 @@
     "test:clear:cache": "jest --clearCache",
     "lint": "eslint src/**/*.mjs utils/*mjs --fix",
     "build": "node utils/index.mjs",
+    "release": "tar -zcvf release.tar.gz lib",
     "prepare": "husky install"
   },
   "keywords": [],
