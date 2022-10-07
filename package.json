@@ -13,6 +13,7 @@
     "lint": "eslint src/**/*.mjs utils/*mjs --fix",
     "build": "node utils/index.mjs",
     "release": "tar -zcvf release.tar.gz lib",
+    "pre:release": "./scripts/release.sh",
     "prepare": "husky install"
   },
   "keywords": [],
