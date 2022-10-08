@@ -5,3 +5,5 @@ yarn-error.log
 coverage/
 mockedFolder
 lib/
+http-server
+release.tar.gz

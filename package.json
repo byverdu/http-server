@@ -11,9 +11,9 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --collect-coverage --detectOpenHandles --forceExit",
     "test:clear:cache": "jest --clearCache",
     "lint": "eslint src/**/*.mjs utils/*mjs --fix",
-    "build": "node utils/index.mjs",
-    "release": "tar -zcvf release.tar.gz lib",
-    "pre:release": "./scripts/release.sh",
+    "build": "node utils/minify.mjs",
+    "zip": "./scripts/zip.sh",
+    "release": "./scripts/release.sh",
     "prepare": "husky install"
   },
   "keywords": [],

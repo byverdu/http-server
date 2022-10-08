@@ -19,7 +19,7 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn build      
-      - run: yarn release
+      - run: yarn zip
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
@@ -29,5 +29,3 @@ jobs:
           removeArtifacts: true
           artifacts: |
             release.tar.gz
-            README.md
-            package.json
