@@ -26,3 +26,7 @@ function printColors() {
 function get_package_version {
   node -p "require('./package.json').version"
 }
+
+function get_previous_git_tag {
+  git describe --abbrev=0 --tags --exclude="$(git describe --abbrev=0 --tags)"
+}
