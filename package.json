@@ -13,6 +13,7 @@
     "lint": "eslint src/**/*.mjs utils/*mjs --fix",
     "build": "node utils/minify.mjs",
     "zip": "./scripts/zip.sh",
+    "release:notes": "./scripts/release_notes.sh",
     "release": "./scripts/release.sh",
     "prepare": "husky install"
   },
