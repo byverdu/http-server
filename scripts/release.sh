@@ -7,7 +7,7 @@ if [ -z "$(git status --porcelain)" ]; then
     npm version "$version_type"
     package_version="v$(get_package_version)"
 
-    echo -e "Release notes for $package_version\n" >release.md
+    echo -e "# Release notes for $package_version\n" >release.md
     git log "$package_version"..Head --oneline >>release.md
 
     # git push origin "$package_version"
