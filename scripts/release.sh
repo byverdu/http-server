@@ -9,6 +9,9 @@ if [ -z "$(git status --porcelain)" ]; then
 
     git push origin "$package_version"
 
+    echo -e "Release notes for $package_version\n" >>release.md
+    git log "$package_version"..Head --oneline >release.md
+
     printColors green "Package version updated to $package_version"
     break
   done
