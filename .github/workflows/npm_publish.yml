@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
+      - run: 'echo -e  git describe --abbrev=0 --tags --exclude="$(git describe --abbrev=0 --tags)"'
       - uses: actions/setup-node@v3
         with:
           node-version: 16
