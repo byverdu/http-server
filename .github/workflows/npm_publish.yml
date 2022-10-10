@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
-      - run: 'git log $(git describe --abbrev=0 --tags --exclude="$(git describe --abbrev=0 --tags)")..Head --oneline'
+      - run: 'git log --oneline'
       - uses: actions/setup-node@v3
         with:
           node-version: 16
