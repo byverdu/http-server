@@ -25,16 +25,16 @@ jobs:
       - run: yarn build
       - run: yarn release:notes
       - run: yarn zip
-      - name: actions
-      - if: steps.yarn-scripts.outcome != 'success'
-        run: exit 1
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_AUTH_TOKEN }}
-      - uses: "ncipollo/release-action@v1"
-        with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          bodyFile: ./release.md
-          artifacts: |
-            release.tar.gz
-            release.zip
+      # - name: actions
+      # - if: steps.yarn-scripts.outcome != 'success'
+      #   run: exit 1
+      # - uses: JS-DevTools/npm-publish@v1
+      #   with:
+      #     token: ${{ secrets.NPM_AUTH_TOKEN }}
+      # - uses: "ncipollo/release-action@v1"
+      #   with:
+      #     token: "${{ secrets.GITHUB_TOKEN }}"
+      #     bodyFile: ./release.md
+      #     artifacts: |
+      #       release.tar.gz
+      #       release.zip
