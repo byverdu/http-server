@@ -17,7 +17,12 @@
     "release": "./scripts/release.sh",
     "prepare": "husky install"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "boilerplate",
+    "http-server",
+    "static server"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/byverdu/http-server/issues"
