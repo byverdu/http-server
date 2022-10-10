@@ -1,6 +1,6 @@
 {
   "name": "@byverdu/http-server",
-  "version": "1.0.66",
+  "version": "1.0.67",
   "description": "Exported Express app to speed up other modules/prototypes that require a server",
   "type": "module",
   "main": "./lib/server.mjs",
