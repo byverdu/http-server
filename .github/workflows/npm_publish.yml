@@ -17,13 +17,15 @@ jobs:
         with:
           node-version: 16
           cache: 'yarn'
+      - name: Run yarn scripts
+        continue-on-error: false
       - run: yarn
       - run: yarn lint
       - run: yarn test
       - run: yarn build
       - run: yarn release:notes
       - run: yarn zip
-      - continue-on-error: false
+      - name: Run marketplace actions
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
