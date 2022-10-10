@@ -4,10 +4,9 @@ source ./scripts/utils.sh
 
 if [ -z "$(git status --porcelain)" ]; then
   select version_type in major minor patch; do
-    npm version "$version_type" -m "Package updated to version $package_version"
+    npm version "$version_type"
+    # npm version "$version_type" -no-git-tag-version
     package_version="v$(get_package_version)"
-
-    git tag "$package_version"
 
     git push origin "$package_version"
 
