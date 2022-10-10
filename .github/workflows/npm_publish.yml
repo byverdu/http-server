@@ -12,29 +12,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: '0'
-      - name: Run yarn scripts
+            fetch-depth: '0'
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'
-        id: yarn-scripts
       - run: yarn
       - run: yarn lint
       - run: yarn test
       - run: yarn build
       - run: yarn release:notes
       - run: yarn zip
-      # - name: actions
-      # - if: steps.yarn-scripts.outcome != 'success'
-      #   run: exit 1
-      # - uses: JS-DevTools/npm-publish@v1
-      #   with:
-      #     token: ${{ secrets.NPM_AUTH_TOKEN }}
-      # - uses: "ncipollo/release-action@v1"
-      #   with:
-      #     token: "${{ secrets.GITHUB_TOKEN }}"
-      #     bodyFile: ./release.md
-      #     artifacts: |
-      #       release.tar.gz
-      #       release.zip
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+      - uses: "ncipollo/release-action@v1"
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          bodyFile: ./release.md
+          artifacts: |
+            release.tar.gz
+            release.zip
