@@ -8,7 +8,9 @@ if [ -z "$(git status --porcelain)" ]; then
 
     package_version="v$(get_package_version)"
 
-    git push origin --follow-tags
+    # pushing branches and tags is a two step process
+    git push --no-verify
+    git push origin "$package_version" --no-verify
 
     echo "Package version updated to $package_version"
     break
