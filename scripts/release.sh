@@ -7,6 +7,8 @@ if [ -z "$(git status --porcelain)" ]; then
     npm version "$version_type" -no-git-tag-version
     package_version="v$(get_package_version)"
 
+    git commit -am "Package updated to version $package_version"
+
     git tag "$package_version"
 
     git push origin "$package_version"
