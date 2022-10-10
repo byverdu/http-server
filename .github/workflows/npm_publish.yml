@@ -21,7 +21,7 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn build
-      - run: yarn release:notes
+      # - run: yarn release:notes
       - run: yarn zip
       - uses: JS-DevTools/npm-publish@v1
         with:
