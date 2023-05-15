@@ -16,13 +16,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'yarn'
-      - run: yarn
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn build
-      - run: yarn release:notes
-      - run: yarn zip
+          cache: 'pnpm'
+      - run: pnpm i
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm release:notes
+      - run: pnpm zip
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
