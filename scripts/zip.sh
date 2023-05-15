@@ -7,7 +7,7 @@ printColors green "zipping files script"
 
 printColors orange "removing old files"
 
-rm -rf http-server.* temp
+rm -rf release.* temp
 
 printColors green "creating temp folder and moving files into it"
 
@@ -16,8 +16,8 @@ mv lib ./temp
 cp package.json README.md temp/
 
 # https://unix.stackexchange.com/questions/385405/zip-all-files-and-subfolder-in-directory-without-parent-directory
-(cd temp && zip -r "$OLDPWD/http-server.zip" .) || printColors green "zip failed"
-tar -zcvf http-server.tar.gz temp
+(cd temp && zip -r "$OLDPWD/release.zip" .) || printColors green "zip failed"
+tar -zcvf release.tar.gz temp
 
 sleep 1
 
