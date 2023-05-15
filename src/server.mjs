@@ -1,7 +1,7 @@
-import { expressApp } from './app.mjs'
+import { expressApp } from './app.mjs';
 
 /**
- *
+ * @preserve
  * @param {{
  *  port: number,
  *  routes: Array<{
@@ -11,16 +11,17 @@ import { expressApp } from './app.mjs'
  *  }>
  *  middleware: Array<Function>
  * }}
+ *
  * @returns @type Express
  */
 
-function httpServer ({ port, routes, middleware = [] } = {}) {
-  const PORT = port || 3000
-  const server = expressApp({ routes, middleware })
+function httpServer({ port, routes, middleware = [] } = {}) {
+  const PORT = port || 3000;
+  const server = expressApp({ routes, middleware });
 
   return server.listen(PORT, () => {
-    console.log(`App running on: ${PORT}`)
-  })
+    console.log(`App running on: ${PORT}`);
+  });
 }
 
-export { httpServer }
+export { httpServer };

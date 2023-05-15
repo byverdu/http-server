@@ -1,11 +1,26 @@
 #!/bin/bash
+
+# shellcheck source=/dev/null
 source ./scripts/utils.sh
 
-mkdir -p http-server/lib
-cp Readme.md package.json http-server
+printColors green "zipping files script"
+
+printColors orange "removing old files"
+
+rm -rf release.* temp
+
+printColors green "creating temp folder and moving files into it"
+
+mkdir temp
+mv lib ./temp
+cp package.json README.md temp/
+
+# https://unix.stackexchange.com/questions/385405/zip-all-files-and-subfolder-in-directory-without-parent-directory
+(cd temp && zip -r "$OLDPWD/release.zip" .) || printColors green "zip failed"
+tar -zcvf release.tar.gz temp
+
 sleep 1
-mv lib/* http-server/lib
-tar -zcvf release.tar.gz http-server
-zip -r release.zip http-server
+
+rm -rf temp
 
 printColors green "zip and tar files created"

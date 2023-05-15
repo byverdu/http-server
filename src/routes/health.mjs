@@ -1,9 +1,9 @@
-import { Router } from 'express'
+import { Router } from 'express';
 
-const healthRouter = Router()
+const healthRouter = Router();
 
 healthRouter.get('/', (_, res) => {
-  res.send('ok')
-})
+  res.send('ok');
+});
 
-export { healthRouter }
+export { healthRouter };
