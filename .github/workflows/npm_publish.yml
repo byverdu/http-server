@@ -21,11 +21,11 @@ jobs:
           node-version: 16
           cache: 'pnpm'
       - run: pnpm i
-      - run: pnpm lint
-      - run: pnpm test
-      - run: pnpm build
-      - run: pnpm release:notes
-      - run: pnpm zip
+      - run: pnpm run lint
+      - run: pnpm run test
+      - run: pnpm run build
+      - run: pnpm run release:notes
+      - run: pnpm run zip
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
