@@ -12,15 +12,17 @@ rm -rf release.* temp
 printColors green "creating temp folder and moving files into it"
 
 mkdir temp
-mv lib ./temp
+cp -r lib ./temp
 cp package.json README.md temp/
 
 # https://unix.stackexchange.com/questions/385405/zip-all-files-and-subfolder-in-directory-without-parent-directory
-(cd temp && zip -r "$OLDPWD/release.zip" .) || printColors green "zip failed"
+(cd temp && zip -r "$OLDPWD/release.zip" .) || printColors red "zip failed"
 tar -zcvf release.tar.gz temp
 
 sleep 1
 
 rm -rf temp
+
+ls -a
 
 printColors green "zip and tar files created"
