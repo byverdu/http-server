@@ -23,6 +23,8 @@ sleep 1
 
 rm -rf temp
 
-ls -a
+printColors green "running release notes script"
+
+pnpm run release:notes || printColors red "release notes script failed"
 
 printColors green "zip and tar files created"
