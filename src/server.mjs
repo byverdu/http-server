@@ -2,20 +2,12 @@ import { expressApp } from './app.mjs';
 
 /**
  * @preserve
- * @param {{
- *  port: number,
- *  routes: Array<{
- *    method: 'get' | 'put' | 'delete' | 'post' | 'patch',
- *    path: string,
- *    handler: function(Request, Response)
- *  }>
- *  middleware: Array<Function>
- * }}
+ * @param {import("../utils/types.mjs").Params}
  *
- * @returns @type Express
+ * @returns  {import("http").Server}
  */
 
-function httpServer({ port, routes, middleware = [] } = {}) {
+function httpServer({ port, routes, middleware }) {
   const PORT = port || 3000;
   const server = expressApp({ routes, middleware });
 

@@ -6,17 +6,11 @@ import { healthRouter } from './routes/health.mjs';
 
 /**
  * @preserve
- * @param {{
- *  routes: Array<{
- *    method: 'get' | 'put' | 'delete' | 'post' | 'patch',
- *    path: string,
- *    handler: function(Request, Response)
- *  }>
- *  middleware: Array<Function>
- * }}
- * @returns @type Express
+ * @param {import("../utils/types.mjs").Params}
+ *
+ * @returns {import("express").Express}
  */
-function expressApp({ routes, middleware } = {}) {
+function expressApp({ routes, middleware }) {
   if (!routes || !Array.isArray(routes)) {
     throw new Error('Either routes is not defined or it is not an Array');
   }

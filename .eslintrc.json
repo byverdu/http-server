@@ -13,6 +13,8 @@
   },
   "rules": {
     "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
-    "semi": "off"
+    "semi": "off",
+    "space-before-function-paren": "off",
+    "comma-dangle":"off"
   }
 }

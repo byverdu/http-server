@@ -2,4 +2,4 @@
 
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm run prettify && pnpm run lint
+pnpm run prettier:check && pnpm run lint

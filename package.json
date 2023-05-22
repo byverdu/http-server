@@ -16,6 +16,7 @@
     "release:notes": "./scripts/release_notes.sh",
     "release": "./scripts/release.sh",
     "prepare": "husky install",
+    "prettier:check": "prettier --check ./src/*",
     "prettify": "prettier ./src/* --write"
   },
   "keywords": [
