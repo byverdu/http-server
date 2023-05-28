@@ -2,6 +2,16 @@
 
 # http-server
 
+<!-- 
+https://medium.com/@rehmankhan.exe/form-validation-using-chain-of-responsibility-design-pattern-69c09339461a
+
+https://levelup.gitconnected.com/design-patterns-chain-of-responsibility-pattern-in-javascript-80b3c44d0f4e
+
+https://medium.com/nerd-for-tech/chain-of-responsibility-design-pattern-4efe8de4910d
+ -->
+
+<!-- DOCS need to be updated -->
+
 This package is meant to be used as a quick way to setup an Express application. The module does not have too much defined. The default functionality is the following.
 
 - `cors` enabled

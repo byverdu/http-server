@@ -31,9 +31,18 @@
  * @typedef {Object} Params
  *
  * @property {number} [port]
+ * @property {string} [msg] // delete
  * @property {Array<Middleware>} middleware
  * @property {Options} [options]
  * @property {Array<Route>} routes
+ */
+
+/**
+ * Validator return Object
+ * @typedef {Object} Validator
+ *
+ * @property {boolean} isValid
+ * @property {string} [errorMsg]
  */
 
 export {};
