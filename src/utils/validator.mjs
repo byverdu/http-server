@@ -5,9 +5,9 @@ class Validator {
    * @param {import("../../utils/types.mjs").Params} model
    * @returns {import("../../utils/types.mjs").Validator}
    */
-  isValid(model) {
+  validate(model) {
     if (this.nextValidator) {
-      return this.nextValidator.isValid(model);
+      return this.nextValidator.validate(model);
     }
 
     return {
@@ -23,19 +23,10 @@ class Validator {
 class PortValidator extends Validator {
   /**
    * @param {import("../../utils/types.mjs").Params} model
-   * @returns {number}
-   */
-  getPort(model) {
-    return model.port;
-  }
-
-  /**
-   * @param {import("../../utils/types.mjs").Params} model
    * @returns {import("../../utils/types.mjs").Validator}
    */
-  isValid(model) {
-    const port = this.getPort(model);
-    const typeofPort = typeof port;
+  validate(model) {
+    const typeofPort = typeof model.port;
 
     if (typeofPort !== 'number') {
       return {
@@ -44,26 +35,17 @@ class PortValidator extends Validator {
       };
     }
 
-    return super.isValid(model);
+    return super.validate(model);
   }
 }
 
 class MsgValidator extends Validator {
   /**
    * @param {import("../../utils/types.mjs").Params} model
-   * @returns {string}
-   */
-  getMsg(model) {
-    return model.msg;
-  }
-
-  /**
-   * @param {import("../../utils/types.mjs").Params} model
    * @returns {import("../../utils/types.mjs").Validator}
    */
-  isValid(model) {
-    const msg = this.getMsg(model);
-    const typeofMsg = typeof msg;
+  validate(model) {
+    const typeofMsg = typeof model.msg;
 
     if (typeofMsg !== 'string') {
       return {
@@ -72,7 +54,7 @@ class MsgValidator extends Validator {
       };
     }
 
-    return super.isValid(model);
+    return super.validate(model);
   }
 }
 
@@ -86,19 +68,15 @@ class ValidatorChain {
     if (!this.first) {
       this.first = validator;
       this.last = validator;
-
-      // return this;
     }
 
     this.last.setNextValidator(validator);
     this.last = validator;
 
-    console.log(this);
-
     return this;
   }
 
-  getFirst() {
+  startValidation() {
     return this.first;
   }
 }
@@ -111,7 +89,7 @@ const options = {
 const validation = new ValidatorChain()
   .add(new PortValidator())
   .add(new MsgValidator())
-  .getFirst()
-  .isValid(options);
+  .startValidation()
+  .validate(options);
 
 console.log(validation);
