@@ -15,15 +15,31 @@
  *
  * @property {Operations} method
  * @property {string} path
- * @property {(req: Express.Request, resp: Express.Response) => void} handler
+ * @property {(req: import("express").Request, resp:  import("express").Response) => void} handler
  */
 
 /**
- * @typedef {Object} Middleware
+ * Validator return Object
+ * @typedef {Object} ValidatorClass
  *
- * @property {import("express").Request} req
- * @property {import("express").Response} res
- * @property {import("express").NextFunction} next
+ * @property {(param: Params) => Validator} validate
+ * @property {(param: ValidatorClass) => void} setNextValidator
+ */
+
+/**
+ * Returns if model is valid
+ * @typedef {Object} Validator
+ *
+ * @property {boolean} isValid
+ * @property {string} [errorMsg]
+ */
+
+/**
+ * Returns if model is valid
+ * @typedef {Object} ValidatorChain
+ *
+ * @property {boolean} isValid
+ * @property {string} [errorMsg]
  */
 
 /**
@@ -31,18 +47,9 @@
  * @typedef {Object} Params
  *
  * @property {number} [port]
- * @property {string} [msg] // delete
- * @property {Array<Middleware>} middleware
+ * @property {Array<(req: import("express").Request, resp: import("express").Response, next: import("express").NextFunction) => void>} [middleware]
  * @property {Options} [options]
- * @property {Array<Route>} routes
- */
-
-/**
- * Validator return Object
- * @typedef {Object} Validator
- *
- * @property {boolean} isValid
- * @property {string} [errorMsg]
+ * @property {Array<Route>} [routes]
  */
 
 export {};
