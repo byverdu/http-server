@@ -367,4 +367,45 @@ describe('MiddlewareValidator', () => {
       isValid: false,
     });
   });
+
+  it('should validate that "middleware" is an array of functions', () => {
+    jest.spyOn(Validator.prototype, 'validate');
+
+    const example = new MiddlewareValidator().validate({ middleware: [true] });
+
+    expect(Validator.prototype.validate).toBeCalledTimes(0);
+    expect(example).toEqual({
+      errorMsg:
+        '"middleware" property should be typeof function but boolean was given',
+      isValid: false,
+    });
+  });
+
+  it('should validate that a "middleware" has 3 or 4 arguments', () => {
+    jest.spyOn(Validator.prototype, 'validate');
+
+    const example = new MiddlewareValidator().validate({
+      middleware: [(req, res) => {}],
+    });
+
+    expect(Validator.prototype.validate).toBeCalledTimes(0);
+    expect(example).toEqual({
+      errorMsg:
+        '"middleware" should have 3 args (req, res, next) or 4 args for error (error, req, res, next)',
+      isValid: false,
+    });
+  });
+
+  it('should call Validator.validate if middleware are valid', () => {
+    jest.spyOn(Validator.prototype, 'validate');
+
+    const example = new MiddlewareValidator().validate({
+      middleware: [(req, res, next) => {}],
+    });
+
+    expect(Validator.prototype.validate).toBeCalledTimes(1);
+    expect(example).toEqual({
+      isValid: true,
+    });
+  });
 });
