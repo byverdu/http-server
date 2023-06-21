@@ -20,7 +20,6 @@ function httpServer({
   middleware = [],
   options = { useCors: true },
 } = {}) {
-  const NODE_ENV = process.env.NODE || 'PROD';
   const PORT = port || 3000;
   const validation = new ValidatorChain()
     .add(new PortValidator())
@@ -30,7 +29,7 @@ function httpServer({
     .startValidation()
     .validate({ port: PORT, routes, middleware, options });
 
-  if (NODE_ENV !== 'test' && !validation.isValid) {
+  if (!validation.isValid) {
     console.error(validation.errorMsg);
 
     process.exit(1);

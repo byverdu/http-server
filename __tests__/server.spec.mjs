@@ -70,10 +70,8 @@ describe('Server', () => {
   });
 
   it('should stop the app if the Validator fails', () => {
+    // process.exit it's been spied on jest/setupTests.js
     jest.spyOn(console, 'error');
-    jest.spyOn(process, 'exit').mockImplementation(error => error);
-
-    process.env.NODE = 'dev';
 
     const server = httpServer({
       port: '6969',

@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node ./src/server.mjs",
     "dev": "nodemon ./src/server.mjs",
-    "test:dev": "NODE=test node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --detectOpenHandles",
-    "test": "NODE=test node --experimental-vm-modules node_modules/jest/bin/jest.js --collect-coverage --detectOpenHandles --forceExit",
+    "test:dev": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --detectOpenHandles",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --collect-coverage --detectOpenHandles --forceExit",
     "test:clear:cache": "jest --clearCache",
     "lint": "eslint src/**/*.mjs utils/*mjs --fix",
     "build": "node utils/minify.mjs",
