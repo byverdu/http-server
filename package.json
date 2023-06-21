@@ -5,8 +5,8 @@
   "type": "module",
   "main": "./lib/server.mjs",
   "scripts": {
-    "start": "node server.mjs",
-    "dev": "nodemon server.mjs",
+    "start": "node ./src/server.mjs",
+    "dev": "nodemon ./src/server.mjs",
     "test:dev": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --detectOpenHandles",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --collect-coverage --detectOpenHandles --forceExit",
     "test:clear:cache": "jest --clearCache",
@@ -16,6 +16,7 @@
     "release:notes": "./scripts/release_notes.sh",
     "release": "./scripts/release.sh",
     "prepare": "husky install",
+    "prettier:check": "prettier --check ./src/*",
     "prettify": "prettier ./src/* --write"
   },
   "keywords": [
@@ -54,6 +55,9 @@
   "jest": {
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(mjs?|js?)$",
     "transform": {},
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest/setupTests.js"
+    ],
     "moduleFileExtensions": [
       "mjs",
       "js"
