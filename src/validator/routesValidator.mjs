@@ -1,13 +1,14 @@
 import { Validator, utils } from './index.mjs';
 
 export class RoutesValidator extends Validator {
+  static routeProps = ['method', 'path', 'handler'];
   /**
-   * @param {import("../../utils/types.mjs").Route} route
+   * @param {string[]} routeProps
    * @returns {boolean}
    */
-  validateRoutesProps(route) {
-    return ['method', 'path', 'handler']
-      .map(prop => Object.keys(route).includes(prop))
+  validateRoutesProps(routeProps) {
+    return RoutesValidator.routeProps
+      .map(prop => routeProps.includes(prop))
       .every(Boolean);
   }
 
@@ -19,8 +20,13 @@ export class RoutesValidator extends Validator {
     return ['delete', 'get', 'patch', 'post', 'put'].includes(operation);
   }
 
+  /**
+   *
+   * @param {string} path
+   * @returns
+   */
   validateRoutePath(path) {
-    return `${path}`.startsWith('/');
+    return path.length > 0 && `${path}`.startsWith('/');
   }
 
   /**
@@ -43,12 +49,15 @@ export class RoutesValidator extends Validator {
      */
 
     for (const route of routes) {
-      const hasInvalidProps = !this.validateRoutesProps(route);
+      const routeProps = Object.keys(route);
+      const hasInvalidProps = !this.validateRoutesProps(routeProps);
 
       if (hasInvalidProps) {
         return {
           isValid: false,
-          errorMsg: '"routes" items have invalid props',
+          errorMsg: `"routes" item have invalid or missing props.\nReceived: ${routeProps.join(
+            '-'
+          )}\nValid: ${RoutesValidator.routeProps.join('-')}`,
         };
       }
 

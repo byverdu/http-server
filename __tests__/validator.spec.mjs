@@ -247,17 +247,20 @@ describe('RoutesValidator', () => {
       routes: [
         {
           methods: 'foo',
+          pat: '/route',
         },
       ],
     });
 
     expect(Validator.prototype.validate).toBeCalledTimes(0);
     expect(RoutesValidator.prototype.validateRoutesProps).toBeCalledTimes(1);
-    expect(RoutesValidator.prototype.validateRoutesProps).toBeCalledWith({
-      methods: 'foo',
-    });
+    expect(RoutesValidator.prototype.validateRoutesProps).toBeCalledWith([
+      'methods',
+      'pat',
+    ]);
     expect(example).toEqual({
-      errorMsg: '"routes" items have invalid props',
+      errorMsg:
+        '"routes" item have invalid or missing props.\nReceived: methods-pat\nValid: method-path-handler',
       isValid: false,
     });
   });
@@ -293,7 +296,7 @@ describe('RoutesValidator', () => {
         {
           method: 'get',
           handler: '',
-          path: true,
+          path: '',
         },
       ],
     });
